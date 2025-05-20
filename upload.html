@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Files</title>
+</head>
+
+<body>
+  <!-- Upload section-->
+  <div>
+    <h3>Upload Section</h3> <br>
+    <!-- action to the /upload route-->
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+      File to be uploaded: <input type="file" name="uploadFile" id="myFiles" multiple />
+      <br><br>
+      <button type="submit">Upload</button>
+    </form>
+    <h2></h2>
+    <h3></h3>
+    <br>
+  </div>
+
+  <!-- Download Section-->
+  <div>
+    <h3>Uploaded Files:</h3> <br>
+    <!-- action to the /download route-->
+    <form action="/download" method="get">
+      <button type="submit">Download</button>
+    </form>
+  </div>
+  <!-- <script>
+    const form = document.getElementById('uploadForm')
+    const sendFiles = async () => {
+      const myFiles = document.getElementById('myFiles').files
+      const formData = new FormData()
+      Object.keys(myFiles).forEach(key => {
+        formData.append(myFiles.item(key).name, myFiles.item(key))
+      })
+
+      const response = await fetch('http://localhost:3500/upload', {
+        method: 'POST',
+        body: formData
+      })
+      const json = await response.json()
+
+      const h2 = document.querySelector('h2')
+      h2.textContent = `Status: ${json?.status}`
+
+      const h3 = document.querySelector('h3')
+      h2.textContent = json?.message
+
+      console.log(json)
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      sendFiles()
+    })
+  </script> -->
+</body>
+
+</html>
